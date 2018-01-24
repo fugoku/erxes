@@ -10,7 +10,7 @@ import {
 } from 'modules/common/components';
 import { KIND_CHOICES } from 'modules/settings/integrations/constants';
 import { LoadMore, Title, Columns, Column } from 'modules/customers/styles';
-import { BrandName, IntegrationName } from '../styles';
+import { BrandName, IntegrationName } from '../../styles';
 
 const propTypes = {
   currentChannel: PropTypes.object,

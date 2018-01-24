@@ -10,7 +10,7 @@ import {
 } from 'modules/common/components';
 import { KIND_CHOICES } from 'modules/settings/integrations/constants';
 import { Form, Messenger } from 'modules/settings/integrations/containers';
-import { ActionButtons } from '../styles';
+import { ActionButtons } from '../../styles';
 
 const propTypes = {
   integration: PropTypes.object.isRequired
