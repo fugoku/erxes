@@ -28,6 +28,10 @@ class FormContainer extends Component {
       });
     };
 
+    const clearState = () => {
+      allIntegrationsQuery.refetch({ searchValue: '' });
+    };
+
     const save = integrationIds => {
       editMutation({
         variables: {
@@ -49,6 +53,7 @@ class FormContainer extends Component {
       ...this.props,
       search,
       save,
+      clearState,
       perPage: this.state.perPage,
       allIntegrations: allIntegrationsQuery.integrations || []
     };
