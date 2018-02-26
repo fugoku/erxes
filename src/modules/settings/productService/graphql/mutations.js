@@ -1,11 +1,15 @@
 const commonParamsDef = `
   $name: String!,
   $type: String!,
+  $description: String,
+  $sku: String
 `;
 
 const commonParams = `
   name: $name,
-  type: $type
+  type: $type,
+  description: $description,
+  sku: $sku
 `;
 
 const productAdd = `
