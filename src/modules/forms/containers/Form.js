@@ -9,7 +9,6 @@ import { Alert, confirm } from 'modules/common/utils';
 import { Bulk } from 'modules/common/components';
 import { queries, mutations } from '../graphql';
 import { Form } from '../components';
-import { FIELDS__CONTENT_TYPES } from '../constants';
 
 class ListContainer extends Bulk {
   render() {
@@ -35,8 +34,8 @@ class ListContainer extends Bulk {
     const brands = brandsQuery.brands || [];
     const forms = formsQuery.forms || [];
     const fields = [];
-    const integration = integrationDetailQuery.integrationDetail;
-    console.log(integration);
+    const integration = integrationDetailQuery.integrationDetail || {};
+
     // cloning graphql results, because in component we need to change
     // each field's attributes and it is immutable. so making it mutable
     fieldsQuery.fields.forEach(field => {
@@ -45,9 +44,10 @@ class ListContainer extends Bulk {
 
     // create field
     const addField = doc => {
+      console.log(doc, contentTypeId);
       fieldsAdd({
         variables: {
-          contentType: FIELDS__CONTENT_TYPES.FORM,
+          contentType: 'form',
           contentTypeId: contentTypeId || '',
           ...doc
         }
