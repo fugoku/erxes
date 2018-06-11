@@ -13,23 +13,17 @@ const CreateMessengerContainer = props => {
     history,
     usersQuery,
     brandsQuery,
-    integrationDetailQuery,
     saveMessengerMutation,
     saveConfigsMutation,
     saveAppearanceMutation
   } = props;
 
-  if (
-    integrationDetailQuery.loading ||
-    usersQuery.loading ||
-    brandsQuery.loading
-  ) {
+  if (usersQuery.loading || brandsQuery.loading) {
     return <Spinner objective />;
   }
 
   const users = usersQuery.users || [];
   const brands = brandsQuery.brands || [];
-  const integration = integrationDetailQuery.integrationDetail || {};
 
   const save = doc => {
     const { name, brandId, languageCode, messengerData, uiOptions } = doc;
@@ -66,8 +60,7 @@ const CreateMessengerContainer = props => {
     prevOptions: {},
     teamMembers: users || [],
     brands,
-    save,
-    integration
+    save
   };
 
   return <CreateMessenger {...updatedProps} />;
@@ -76,7 +69,6 @@ const CreateMessengerContainer = props => {
 CreateMessengerContainer.propTypes = {
   usersQuery: PropTypes.object,
   brandsQuery: PropTypes.object,
-  integrationDetailQuery: PropTypes.object,
   saveConfigsMutation: PropTypes.func,
   saveAppearanceMutation: PropTypes.func,
   saveMessengerMutation: PropTypes.func,
@@ -102,15 +94,6 @@ const CreateMessengerWithData = compose(
   graphql(gql(queries.brands), {
     name: 'brandsQuery',
     options: () => ({
-      fetchPolicy: 'network-only'
-    })
-  }),
-  graphql(gql(queries.integrationDetail), {
-    name: 'integrationDetailQuery',
-    options: ({ integrationId }) => ({
-      variables: {
-        _id: integrationId || ''
-      },
       fetchPolicy: 'network-only'
     })
   }),
