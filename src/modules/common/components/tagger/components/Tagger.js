@@ -75,6 +75,7 @@ class Tagger extends Component {
 
     // detect changes
     const { tagsForList } = this.state;
+
     const unchanged = tagsForList.reduce(
       (prev, current, index) =>
         prev && current.selectedBy === tags[index].selectedBy,
@@ -116,12 +117,14 @@ class Tagger extends Component {
 
     const { __ } = this.context;
     const { className, event, type } = this.props;
+
     const links = [
       {
         title: __('Manage tags'),
         href: `/tags/${type}`
       }
     ];
+
     const props = {
       className,
       links,
