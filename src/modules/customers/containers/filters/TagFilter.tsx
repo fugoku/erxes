@@ -6,7 +6,7 @@ import * as React from 'react';
 import { compose, graphql } from 'react-apollo';
 import { queries as customerQueries } from '../../graphql';
 
-const SegmentFilterContainer = (props: {
+const TagFilterContainer = (props: {
   customersCountQuery: any;
   tagsQuery: any;
 }) => {
@@ -40,4 +40,4 @@ export default compose(
       fetchPolicy: 'network-only'
     })
   })
-)(SegmentFilterContainer);
+)(TagFilterContainer);
