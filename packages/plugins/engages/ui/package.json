@@ -1,7 +1,10 @@
 {
   "name": "@erxes/plugin-engages",
   "scripts": {
-    "install": "cd .erxes && yarn install",
+    "install-deps": "cd .erxes && yarn install",
     "start": "cd .erxes && yarn start"
+  },
+  "dependencies": {
+    "@erxes/ui": "1.0.0"
   }
 }
