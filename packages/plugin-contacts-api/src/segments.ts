@@ -11,7 +11,8 @@ export default {
     ticket: 'Ticket',
     task: 'Task',
     customer: 'Customer',
-    company: 'Company'
+    company: 'Company',
+    converstaion: 'Conversation'
   },
 
   associationTypes: async () => {
@@ -20,7 +21,8 @@ export default {
       'contacts:company',
       'cards:deal',
       'cards:ticket',
-      'cards:task'
+      'cards:task',
+      'inbox:conversation'
     ];
 
     return { data: types, status: 'success' };
