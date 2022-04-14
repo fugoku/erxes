@@ -1,5 +1,5 @@
-import memoryStorage from 'erxes-inmemory-storage';
-import { debug } from './configs';
+import memoryStorage from "erxes-inmemory-storage";
+import { debug } from "./configs";
 
 const { REDIS_HOST, REDIS_PORT, REDIS_PASSWORD } = process.env;
 
