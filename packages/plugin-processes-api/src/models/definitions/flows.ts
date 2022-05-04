@@ -1,50 +1,67 @@
 import { Document, Schema } from 'mongoose';
-import { DURATION_TYPES } from './constants';
 import { field, schemaHooksWrapper } from './utils';
-import { jobSchema, productsDataSchema } from './plants';
+import { IJobRefer, jobReferSchema } from './jobs';
 
-export interface ITag {
-  name: string;
-  type: string;
-  colorCode?: string;
-  objectCount?: number;
-  parentId?: string;
+export interface IJob {
+  id: string;
+  nextJobIds: string[];
+  jobRefer: IJobRefer,
+  style: { type: Object },
+  label: { type: String, optional: true },
+  description: { type: String, optional: true },
+  quantity: { type: Number }
 }
 
-export interface ITagDocument extends ITag, Document {
+export interface IFlow {
+  name: String;
+  categoryId: String;
+  status: String;
+  jobs: IJob[];
+}
+
+export interface IFlowDocument extends IFlow, Document {
   _id: string;
   createdAt: Date;
-  order?: string;
-  relatedIds?: string[];
+  createdBy: string;
+  updatedAt: Date;
+  updatedBy: string;
 }
 
-export const flowTemplateSchema = schemaHooksWrapper(
+export const jobSchema = new Schema(
+  {
+    id: { type: String, required: true },
+    nextJobIds: { type: [String] },
+    style: { type: Object },
+    label: { type: String, optional: true },
+    description: { type: String, optional: true },
+
+    jobRefer: { type: jobReferSchema },
+    quantity: { type: Number },
+    assignUserIds: { type: [String] },
+    outBranchId: { type: String },
+    outDepartmentId: { type: String },
+    inBranchId: { type: String },
+    inDepartmentId: { type: String }
+  },
+  { _id: false }
+)
+
+export const flowSchema = schemaHooksWrapper(
   new Schema({
     _id: field({ pkey: true }),
-    plantId: field({ type: String, optional: true, label: 'Plant' }),
+    name: { type: String, required: true },
+    categoryId: field({ type: String, label: 'Category', index: true }),
     status: field({ type: String, label: 'Status' }),
-    createdAt: field({ type: Date, label: 'Created at' }),
-    dueDate: field({ type: Date, label: 'Due Date' }),
-    startAt: field({ type: Date, optional: true, label: 'Start at' }),
-    endAt: field({ type: Date, optional: true, label: 'End at' }),
-    frequency: field({ type: Number, label: 'Frequency count' }),
-    currentPlant: field({ type: jobSchema, optional: true, label: 'Current Plant' }),
-
-    // realization
-    preFlowIds: field({ type: [String], label: 'Previous plants' }),
-    assignedUserIds: field({ type: [String], label: 'Assigned users' }),
-    duration: field({ type: Number, label: 'Duration value' }),
-    durationType: field({
-      type: String, enum: DURATION_TYPES.ALL,
-      default: DURATION_TYPES.HOUR, label: 'Duration value'
-    }),
-    needProducts: field({ type: productsDataSchema, label: 'Need products' }),
-    resultProducts: field({ type: productsDataSchema, label: 'Result products' }),
+    createdAt: { type: Date, default: new Date(), label: 'Created date' },
+    createdBy: { type: String },
+    updatedAt: { type: Date, default: new Date(), label: 'Updated date' },
+    updatedBy: { type: String },
+    jobs: field({ type: jobSchema, label: 'Jobs' }),
   }),
-  'erxes_tags'
+  'erxes_flows'
 );
 
 // for tags query. increases search speed, avoids in-memory sorting
-flowTemplateSchema.index({ status: 1 });
+flowSchema.index({ status: 1 });
 
 
