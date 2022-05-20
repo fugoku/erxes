@@ -115,7 +115,7 @@ const qpayConfigSchema = new Schema(
   { _id: false }
 );
 
-export const configSchema = new Schema<IConfigDocument, IConfigModel>({
+export const configSchema = new Schema({
   _id: field({ pkey: true }),
   name: { type: String, label: 'Name' },
   description: { type: String, label: 'Description' },
