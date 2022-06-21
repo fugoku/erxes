@@ -43,8 +43,8 @@ const workParams = `
   count: String,
   branchId: String,
   departmentId: String,
-  needProducts: JobProductsInput,
-  resultProducts: JobProductsInput
+  needProducts: [JobProductsInput],
+  resultProducts: [JobProductsInput]
 `;
 
 export const mutations = `
