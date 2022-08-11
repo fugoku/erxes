@@ -13,7 +13,7 @@ import Icon from '@erxes/ui/src/components/Icon';
 import { Link } from 'react-router-dom';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
-import { PopoverLinkWrapper } from '@erxes/ui-inbox/src/settings/integrations/components/mail/styles';
+import { PopoverLinkWrapper } from '../styles';
 import React from 'react';
 import { SearchInput } from '../../../styles';
 import Tip from '@erxes/ui/src/components/Tip';

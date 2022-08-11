@@ -3,7 +3,7 @@ import { FlexItem, LeftItem } from '@erxes/ui/src/components/step/styles';
 import ControlLabel from '@erxes/ui/src/components/form/Label';
 import FormControl from '@erxes/ui/src/components/form/Control';
 import FormGroup from '@erxes/ui/src/components/form/Group';
-import { IMessages } from '@erxes/ui-inbox/src/settings/integrations/types';
+import { IMessages } from '../../../types';
 import { IUser } from '@erxes/ui/src/auth/types';
 import React from 'react';
 import SelectTeamMembers from '@erxes/ui/src/team/containers/SelectTeamMembers';

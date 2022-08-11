@@ -1,9 +1,6 @@
 import { Alert, __ } from 'coreui/utils';
 import { Appearance, Availability, Greeting, Intro, Options } from './steps';
-import {
-  Content,
-  LeftContent
-} from '@erxes/ui-inbox/src/settings/integrations/styles';
+import { Content, LeftContent, MessengerPreview } from '../../styles';
 import {
   ControlWrapper,
   Indicator,
@@ -13,10 +10,11 @@ import {
 import {
   IIntegration,
   IMessages,
+  IMessengerApps,
   IMessengerData,
   ISkillData,
   IUiOptions
-} from '@erxes/ui-inbox/src/settings/integrations/types';
+} from '../../types';
 import { Step, Steps } from '@erxes/ui/src/components/step';
 
 import AddOns from '../../containers/messenger/AddOns';
@@ -24,11 +22,9 @@ import Button from '@erxes/ui/src/components/Button';
 import CommonPreview from './widgetPreview/CommonPreview';
 import Connection from './steps/Connection';
 import { IBrand } from '@erxes/ui/src/brands/types';
-import { IMessengerApps } from '@erxes/ui-inbox/src/settings/integrations/types';
 import { IUser } from '@erxes/ui/src/auth/types';
 import { LANGUAGES } from '@erxes/ui-settings/src/general/constants';
 import { Link } from 'react-router-dom';
-import { MessengerPreview } from '@erxes/ui-inbox/src/settings/integrations/styles';
 import React from 'react';
 import { SmallLoader } from '@erxes/ui/src/components/ButtonMutate';
 import Wrapper from '@erxes/ui/src/layout/components/Wrapper';

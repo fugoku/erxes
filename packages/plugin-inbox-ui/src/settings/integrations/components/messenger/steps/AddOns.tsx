@@ -7,16 +7,16 @@ import { FlexItem, LeftItem } from '@erxes/ui/src/components/step/styles';
 import {
   IIntegration,
   ILeadMessengerApp,
+  IMessengerApps,
   ITopicMessengerApp,
   IWebsite,
   IWebsiteMessengerApp
-} from '@erxes/ui-inbox/src/settings/integrations/types';
+} from '../../../types';
 
 import Button from '@erxes/ui/src/components/Button';
-import { IMessengerApps } from '@erxes/ui-inbox/src/settings/integrations/types';
 import { ITopic } from '@erxes/ui-knowledgebase/src/types';
 import Icon from '@erxes/ui/src/components/Icon';
-import { Options } from '@erxes/ui-inbox/src/settings/integrations/styles';
+import { Options } from '../../../styles';
 import React from 'react';
 import Select from 'react-select-plus';
 import Tip from '@erxes/ui/src/components/Tip';

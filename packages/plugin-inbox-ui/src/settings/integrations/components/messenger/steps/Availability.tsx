@@ -1,10 +1,10 @@
 import { FlexItem, LeftItem } from '@erxes/ui/src/components/step/styles';
 
 import ControlLabel from '@erxes/ui/src/components/form/Label';
-import { Description } from '@erxes/ui-inbox/src/settings/integrations/styles';
+import { Description } from '../../../styles';
 import FormControl from '@erxes/ui/src/components/form/Control';
 import FormGroup from '@erxes/ui/src/components/form/Group';
-import { IOnlineHour } from '@erxes/ui-inbox/src/settings/integrations/types';
+import { IOnlineHour } from '../../../types';
 import OnlineHours from './OnlineHours';
 import React from 'react';
 import Select from 'react-select-plus';

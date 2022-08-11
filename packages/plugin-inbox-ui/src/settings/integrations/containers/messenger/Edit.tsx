@@ -5,20 +5,15 @@ import {
   EditMessengerMutationResponse,
   EditMessengerMutationVariables,
   IMessengerApps,
+  IMessengerData,
+  IUiOptions,
   IntegrationDetailQueryResponse,
   MessengerAppsQueryResponse,
   SaveMessengerAppearanceMutationResponse,
   SaveMessengerAppsMutationResponse,
   SaveMessengerConfigsMutationResponse
-} from '@erxes/ui-inbox/src/settings/integrations/types';
-import {
-  IMessengerData,
-  IUiOptions
-} from '@erxes/ui-inbox/src/settings/integrations/types';
-import {
-  mutations,
-  queries
-} from '@erxes/ui-inbox/src/settings/integrations/graphql';
+} from '../../types';
+import { mutations, queries } from '../../graphql';
 
 import { BrandsQueryResponse } from '@erxes/ui/src/brands/types';
 import Form from '../../components/messenger/Form';

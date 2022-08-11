@@ -2,20 +2,17 @@ import * as compose from 'lodash.flowright';
 
 import { Alert, confirm, withProps } from '@erxes/ui/src/utils';
 import {
+  ArchiveIntegrationResponse,
+  IntegrationMutationVariables,
+  IntegrationsQueryResponse
+} from '../../types';
+import {
   CommonFieldsEditResponse,
   RemoveMutationResponse,
   RepairMutationResponse
 } from '../../types';
-import {
-  IntegrationMutationVariables,
-  IntegrationsQueryResponse
-} from '@erxes/ui-inbox/src/settings/integrations/types';
-import {
-  mutations,
-  queries
-} from '@erxes/ui-inbox/src/settings/integrations/graphql';
+import { mutations, queries } from '../../graphql';
 
-import { ArchiveIntegrationResponse } from '@erxes/ui-inbox/src/settings/integrations/types';
 import IntegrationList from '../../components/common/IntegrationList';
 import React from 'react';
 import Spinner from '@erxes/ui/src/components/Spinner';

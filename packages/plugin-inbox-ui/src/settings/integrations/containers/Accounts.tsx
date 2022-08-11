@@ -4,12 +4,9 @@ import {
   AccountsQueryResponse,
   IntegrationTypes,
   RemoveAccountMutationResponse
-} from '@erxes/ui-inbox/src/settings/integrations/types';
+} from '../types';
 import { Alert, getEnv, withProps } from '@erxes/ui/src/utils';
-import {
-  mutations,
-  queries
-} from '@erxes/ui-inbox/src/settings/integrations/graphql';
+import { mutations, queries } from '../graphql';
 
 import Accounts from '../components/Accounts';
 import { IFormProps } from '@erxes/ui/src/types';

@@ -4,11 +4,8 @@ import {
   AccountTitle,
   FacebookButton,
   GoogleButton
-} from '@erxes/ui-inbox/src/settings/integrations/styles';
-import {
-  IAccount,
-  IntegrationTypes
-} from '@erxes/ui-inbox/src/settings/integrations/types';
+} from '../styles';
+import { IAccount, IntegrationTypes } from '../types';
 import { __, confirm } from 'coreui/utils';
 
 import Button from '@erxes/ui/src/components/Button';

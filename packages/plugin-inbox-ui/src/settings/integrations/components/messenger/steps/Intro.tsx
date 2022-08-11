@@ -1,8 +1,5 @@
 import { FlexItem, LeftItem } from '@erxes/ui/src/components/step/styles';
-import {
-  IMessages,
-  ISkillData
-} from '@erxes/ui-inbox/src/settings/integrations/types';
+import { IMessages, ISkillData } from '../../../types';
 
 import BuildSkill from '../../../containers/messenger/BuildSkill';
 import ControlLabel from '@erxes/ui/src/components/form/Label';

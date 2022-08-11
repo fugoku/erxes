@@ -1,8 +1,5 @@
 import { IButtonMutateProps, IRouterProps } from '@erxes/ui/src/types';
-import {
-  mutations,
-  queries
-} from '@erxes/ui-inbox/src/settings/integrations/graphql';
+import { mutations, queries } from '../../graphql';
 
 import { Alert } from '@erxes/ui/src/utils';
 import ButtonMutate from '@erxes/ui/src/components/ButtonMutate';

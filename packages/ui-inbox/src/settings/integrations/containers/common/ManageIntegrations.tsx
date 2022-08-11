@@ -1,13 +1,13 @@
 import * as compose from 'lodash.flowright';
 
 import { IBrandDoc } from '@erxes/ui/src/brands/types';
-import { IChannelDoc } from '@erxes/ui-inbox/src/settings/channels/types';
-import { IntegrationsQueryResponse } from '@erxes/ui-inbox/src/settings/integrations/types';
+import { IChannelDoc } from '../../../channels/types';
+import { IntegrationsQueryResponse } from '../../types';
 import ManageIntegrations from '../../components/common/ManageIntegrations';
 import React from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
-import { queries } from '@erxes/ui-inbox/src/settings/integrations/graphql';
+import { queries } from '../../graphql';
 import { withProps } from '@erxes/ui/src/utils';
 
 type Props = {

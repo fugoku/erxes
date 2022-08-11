@@ -1,9 +1,4 @@
-import {
-  Box,
-  IntegrationItem,
-  Ribbon,
-  Type
-} from '@erxes/ui-inbox/src/settings/integrations/components/store/styles';
+import { Box, IntegrationItem, Ribbon, Type } from './styles';
 
 import { INTEGRATION_KINDS } from '@erxes/ui/src/constants/integrations';
 import Icon from '@erxes/ui/src/components/Icon';

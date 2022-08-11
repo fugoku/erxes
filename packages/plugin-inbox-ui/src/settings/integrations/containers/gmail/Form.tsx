@@ -1,16 +1,13 @@
 import * as React from 'react';
 
 import { IButtonMutateProps, IRouterProps } from '@erxes/ui/src/types';
-import {
-  mutations,
-  queries
-} from '@erxes/ui-inbox/src/settings/integrations/graphql';
+import { mutations, queries } from '../../graphql';
 
 import { Alert } from '@erxes/ui/src/utils';
 import ButtonMutate from '@erxes/ui/src/components/ButtonMutate';
 import Gmail from '../../components/gmail/Form';
 import client from '@erxes/ui/src/apolloClient';
-import { getRefetchQueries } from '@erxes/ui-inbox/src/settings/integrations/containers/utils';
+import { getRefetchQueries } from '../utils';
 import gql from 'graphql-tag';
 import { withRouter } from 'react-router-dom';
 
