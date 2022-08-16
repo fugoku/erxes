@@ -1,13 +1,12 @@
 import React from 'react';
 import { useQuery } from 'react-apollo';
-import { Link, useRouteMatch } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CATEGORIES_BY_PARENT_IDS } from '../graphql/queries';
 
 export default function CategoryNavItem({ category }) {
   const { data, loading, error } = useQuery(CATEGORIES_BY_PARENT_IDS, {
     variables: { parentId: [category._id] }
   });
-  const { path, url } = useRouteMatch();
 
   if (loading) return null;
 
@@ -17,7 +16,7 @@ export default function CategoryNavItem({ category }) {
 
   return (
     <div style={{ padding: 0, margin: 0 }}>
-      <Link to={`/forums/categories/${category._id}`}>
+      <Link to={`/forums/posts?categoryId=${category._id}`}>
         {category.thumbnail && (
           <img
             src={category.thumbnail}
