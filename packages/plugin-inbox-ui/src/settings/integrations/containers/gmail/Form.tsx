@@ -1,16 +1,15 @@
-import client from '@erxes/ui/src/apolloClient';
-import gql from 'graphql-tag';
-import ButtonMutate from '@erxes/ui/src/components/ButtonMutate';
-import { IButtonMutateProps, IRouterProps } from '@erxes/ui/src/types';
-import { Alert } from '@erxes/ui/src/utils';
-import Gmail from '../../components/gmail/Form';
-import {
-  mutations,
-  queries
-} from '@erxes/ui-settings/src/integrations/graphql';
 import * as React from 'react';
+
+import { IButtonMutateProps, IRouterProps } from '@erxes/ui/src/types';
+import { mutations, queries } from '../../graphql';
+
+import { Alert } from '@erxes/ui/src/utils';
+import ButtonMutate from '@erxes/ui/src/components/ButtonMutate';
+import Gmail from '../../components/gmail/Form';
+import client from '@erxes/ui/src/apolloClient';
+import { getRefetchQueries } from '../utils';
+import gql from 'graphql-tag';
 import { withRouter } from 'react-router-dom';
-import { getRefetchQueries } from '@erxes/ui-inbox/src/settings/integrations/containers/utils';
 
 type Props = {
   callBack: () => void;
@@ -39,7 +38,7 @@ class GmailContainer extends React.Component<FinalProps, State> {
       .query({
         query: gql(queries.integrationsGetGmailEmail),
         variables: {
-          accountId 
+          accountId
         }
       })
       .then(({ data, loading }: any) => {
@@ -72,7 +71,7 @@ class GmailContainer extends React.Component<FinalProps, State> {
         callback={callback}
         refetchQueries={getRefetchQueries('gmail')}
         isSubmitted={isSubmitted}
-        type='submit'
+        type="submit"
         successMessage={`You successfully added a ${name}`}
       />
     );

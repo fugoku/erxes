@@ -1,13 +1,11 @@
-import Pagination from '@erxes/ui/src/components/pagination/Pagination';
-import IntegrationList from '@erxes/ui-inbox/src/settings/integrations/containers/common/IntegrationList';
-import React from 'react';
+import { CollapsibleContent, IntegrationRow } from './styles';
+
+import { ByKindTotalCount } from '../../types';
 import Collapse from 'react-bootstrap/Collapse';
-import { ByKindTotalCount } from '@erxes/ui-settings/src/integrations/types';
 import Entry from './Entry';
-import {
-  CollapsibleContent,
-  IntegrationRow
-} from '@erxes/ui-settings/src/integrations/components/store/styles';
+import IntegrationList from '../../containers/common/IntegrationList';
+import Pagination from '@erxes/ui/src/components/pagination/Pagination';
+import React from 'react';
 
 type Props = {
   integrations: any[];

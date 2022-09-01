@@ -1,10 +1,11 @@
-import Button from '@erxes/ui/src/components/Button';
-import FormControl from '@erxes/ui/src/components/form/Control';
-import Form from '@erxes/ui/src/components/form/Form';
-import FormGroup from '@erxes/ui/src/components/form/Group';
-import ControlLabel from '@erxes/ui/src/components/form/Label';
-import Info from '@erxes/ui/src/components/Info';
-import { Step, Steps } from '@erxes/ui/src/components/step';
+import * as React from 'react';
+
+import {
+  Content,
+  ImageWrapper,
+  MessengerPreview,
+  TextWrapper
+} from '../../styles';
 import {
   ControlWrapper,
   FlexItem,
@@ -14,19 +15,20 @@ import {
   StepWrapper
 } from '@erxes/ui/src/components/step/styles';
 import { IButtonMutateProps, IFormProps } from '@erxes/ui/src/types';
-import { __ } from 'coreui/utils';
-import Wrapper from '@erxes/ui/src/layout/components/Wrapper';
-import * as React from 'react';
-import { Link } from 'react-router-dom';
+import { Step, Steps } from '@erxes/ui/src/components/step';
+
 import Accounts from '../../containers/Accounts';
-import SelectBrand from '@erxes/ui-settings/src/integrations/containers/SelectBrand';
-import SelectChannels from '@erxes/ui-settings/src/integrations/containers/SelectChannels';
-import { Content } from '@erxes/ui-settings/src/integrations/styles';
-import {
-  ImageWrapper,
-  MessengerPreview,
-  TextWrapper
-} from '@erxes/ui-inbox/src/settings/integrations/styles';
+import Button from '@erxes/ui/src/components/Button';
+import ControlLabel from '@erxes/ui/src/components/form/Label';
+import Form from '@erxes/ui/src/components/form/Form';
+import FormControl from '@erxes/ui/src/components/form/Control';
+import FormGroup from '@erxes/ui/src/components/form/Group';
+import Info from '@erxes/ui/src/components/Info';
+import { Link } from 'react-router-dom';
+import SelectBrand from '../../containers/SelectBrand';
+import SelectChannels from '../../containers/SelectChannels';
+import Wrapper from '@erxes/ui/src/layout/components/Wrapper';
+import { __ } from 'coreui/utils';
 
 type Props = {
   renderButton: (props: IButtonMutateProps) => JSX.Element;
