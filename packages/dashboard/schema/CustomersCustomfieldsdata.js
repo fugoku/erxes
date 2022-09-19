@@ -32,7 +32,8 @@ cube(`CustomersCustomfieldsdata`, {
     customfieldsdataField: {
       sql: `${Fields}.\`text\``,
       type: `string`,
-      title: `Fields`
+      title: `Fields`,
+      shown: false
     },
 
     customfieldsdataStringvalue: {
