@@ -37,7 +37,7 @@ class ProductFormContainer extends React.Component<FinalProps> {
           uppercase={false}
           successMessage={`You successfully ${
             object ? 'updated' : 'added'
-          } a ${name}`}
+          } year plan`}
         />
       );
     };

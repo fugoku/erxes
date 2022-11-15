@@ -5,7 +5,6 @@ import {
 import { Wrapper } from '@erxes/ui/src/layout';
 import { __, router } from '@erxes/ui/src/utils';
 import React from 'react';
-import SidebarHeader from '@erxes/ui-settings/src/common/components/SidebarHeader';
 import FormGroup from '@erxes/ui/src/components/form/Group';
 import ControlLabel from '@erxes/ui/src/components/form/Label';
 import FormControl from '@erxes/ui/src/components/form/Control';
