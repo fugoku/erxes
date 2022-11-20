@@ -11,7 +11,6 @@ import {
   ControlLabel,
   DateControl,
   Form as CommonForm,
-  FormControl,
   FormGroup
 } from '@erxes/ui/src/components';
 import {

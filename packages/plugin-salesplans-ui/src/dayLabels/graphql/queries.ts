@@ -91,8 +91,8 @@ const dayLabels = `
 `;
 
 const dayLabelsCount = `
-  query dayLabelsCount($year: Int, ${filterDefs}) {
-    dayLabelsCount(year: $year, ${filterValues})
+  query dayLabelsCount($date: Date, ${filterDefs}) {
+    dayLabelsCount(date: $date, ${filterValues})
   }
 `;
 

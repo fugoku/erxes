@@ -38,8 +38,8 @@ export const planFilterParams = `
 `;
 
 export const queries = `
-  dayLabels(year: Int, ${planFilterParams}, ${paginateParams}): [DayLabel],
-  dayLabelsCount(year: Int, ${planFilterParams}, ${paginateParams}): Int,
+  dayLabels(${planFilterParams}, ${paginateParams}): [DayLabel],
+  dayLabelsCount(${planFilterParams}, ${paginateParams}): Int,
 `;
 
 export const planCreateParams = `
