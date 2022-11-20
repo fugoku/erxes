@@ -1,7 +1,9 @@
+import Form from '../containers/Form';
+import Pagination from '@erxes/ui/src/components/pagination/Pagination';
 import React from 'react';
 import Row from './DayLabelRow';
 import Sidebar from './DayLabelSidebar';
-import { __, Alert, confirm, router } from '@erxes/ui/src/utils';
+import { __, Alert, confirm } from '@erxes/ui/src/utils';
 import { BarItems, Wrapper } from '@erxes/ui/src/layout';
 import {
   Button,
@@ -10,11 +12,9 @@ import {
   ModalTrigger,
   Table
 } from '@erxes/ui/src/components';
-import { IPlanValues, IDayLabel } from '../types';
+import { IDayLabel } from '../types';
 import { MainStyleTitle as Title } from '@erxes/ui/src/styles/eindex';
-import Form from '../containers/Form';
-import { menuSalesplans, MONTHS } from '../../constants';
-import Pagination from '@erxes/ui/src/components/pagination/Pagination';
+import { menuSalesplans } from '../../constants';
 
 type Props = {
   dayLabels: IDayLabel[];
