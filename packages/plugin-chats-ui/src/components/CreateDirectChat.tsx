@@ -44,7 +44,7 @@ const CreateDirectChat = (props: Props) => {
         style={{ float: 'right', marginRight: '10px' }}
         onClick={props.closeModal}
       >
-        Back
+        Cancel
       </Button>
     </>
   );
