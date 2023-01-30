@@ -1,61 +1,122 @@
-import * as routerUtils from '@erxes/ui/src/utils/router';
-import { BarItems } from '@erxes/ui/src/layout/styles';
 import Button from '@erxes/ui/src/components/Button';
 import DataWithLoader from '@erxes/ui/src/components/DataWithLoader';
 import { EMPTY_CONTENT_POPUPS } from '@erxes/ui-settings/src/constants';
 import EmptyContent from '@erxes/ui/src/components/empty/EmptyContent';
-import { Flex } from '@erxes/ui/src/styles/main';
-import FormControl from '@erxes/ui/src/components/form/Control';
-import { ITag } from '@erxes/ui-tags/src/types';
-import { Link } from 'react-router-dom';
 import Pagination from '@erxes/ui/src/components/pagination/Pagination';
 import React from 'react';
 import Row from './Row';
 import Sidebar from './Sidebar';
 import SortHandler from '@erxes/ui/src/components/SortHandler';
-import { TAG_TYPES } from '@erxes/ui-tags/src/constants';
 import Table from '@erxes/ui/src/components/table';
-import TaggerPopover from '@erxes/ui-tags/src/components/TaggerPopover';
 import Wrapper from '@erxes/ui/src/layout/components/Wrapper';
-import { __ } from 'coreui/utils';
+import { __ } from '@erxes/ui/src/utils';
 import { IPost } from '../../types';
 import { IntegrationsCount } from '@erxes/ui-leads/src/types';
+import FormControl from '@erxes/ui/src/components/form/Control';
+import ModalTrigger from '@erxes/ui/src/components/ModalTrigger';
+import PostForm from '../../components/PostForm';
+import { IButtonMutateProps } from '@erxes/ui/src/types';
 
 type Props = {
   posts: IPost[];
   queryParams?: any;
   loading?: boolean;
-  remove?: (integrationId: string) => void;
-  refetch?: () => void;
+  remove?: (postId: string) => void;
   history?: any;
+  bulk: any[];
+  isAllSelected: boolean;
+  renderButton: (props: IButtonMutateProps) => JSX.Element;
+  toggleBulk: (target: IPost, toAdd: boolean) => void;
+  toggleAll: (targets: IPost[], containerId: string) => void;
 };
 
 class List extends React.Component<Props, {}> {
   renderRow() {
-    const { posts, remove } = this.props;
+    const { posts, remove, bulk, toggleBulk, renderButton } = this.props;
 
     return posts.map(post => (
-      <Row key={post._id} post={post} remove={remove} />
+      <Row
+        key={post._id}
+        post={post}
+        isChecked={bulk.includes(post)}
+        toggleBulk={toggleBulk}
+        remove={remove}
+        renderButton={renderButton}
+      />
     ));
   }
 
-  render() {
-    const { queryParams, loading, posts } = this.props;
+  renderForm = props => {
+    return <PostForm {...props} renderButton={this.props.renderButton} />;
+  };
 
-    // queryParams.loadingMainQuery = loading;
+  render() {
+    const {
+      queryParams,
+      loading,
+      posts,
+      isAllSelected,
+      bulk,
+      toggleAll
+    } = this.props;
+
+    let actionBarLeft: React.ReactNode;
+
+    queryParams.loadingMainQuery = loading;
+
+    if (bulk.length > 0) {
+      const onClick = () => confirm('Are you sure? This cannot be undone.');
+      // .then(() => {
+      //     this.deletePost(bulk);
+      //   })
+      //   .catch(e => {
+      //     Alert.error(e.message);
+      //   });
+
+      actionBarLeft = (
+        <Button
+          btnStyle="danger"
+          size="small"
+          icon="times-circle"
+          onClick={onClick}
+        >
+          Delete
+        </Button>
+      );
+    }
 
     const actionBarRight = (
-      <Button btnStyle="success" size="small" icon="plus-circle">
-        Create Form
-      </Button>
+      <ModalTrigger
+        title="Create New Post"
+        size="lg"
+        trigger={
+          <Button btnStyle="success" size="small" icon="plus-circle">
+            Create New Post
+          </Button>
+        }
+        content={this.renderForm}
+      />
     );
 
-    const actionBar = <Wrapper.ActionBar right={actionBarRight} />;
+    const onChange = () => {
+      toggleAll(posts, 'posts');
+    };
+
+    const actionBar = (
+      <Wrapper.ActionBar right={actionBarRight} left={actionBarLeft} />
+    );
 
     const content = (
       <Table whiteSpace="nowrap" hover={true}>
         <thead>
           <tr>
+            <th>
+              <FormControl
+                checked={isAllSelected}
+                componentClass="checkbox"
+                onChange={onChange}
+              />
+            </th>
             <th>
               <SortHandler sortField={'title'} label={__('Title')} />
             </th>
@@ -109,13 +170,18 @@ class List extends React.Component<Props, {}> {
       </Table>
     );
 
+    const submenu = [
+      { title: 'Posts', link: '/forums/posts' },
+      { title: 'Pages', link: '/forums/pages' }
+    ];
+
     return (
       <Wrapper
         header={
           <Wrapper.Header
             title={__('Posts')}
-            breadcrumb={[{ title: __('Posts') }]}
             queryParams={queryParams}
+            submenu={submenu}
           />
         }
         leftSidebar={<Sidebar counts={{} as IntegrationsCount} />}

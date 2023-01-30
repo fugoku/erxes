@@ -2,18 +2,20 @@ import ActionButtons from '@erxes/ui/src/components/ActionButtons';
 import Button from '@erxes/ui/src/components/Button';
 import FormControl from '@erxes/ui/src/components/form/Control';
 import Icon from '@erxes/ui/src/components/Icon';
-import Label from '@erxes/ui/src/components/Label';
 import ModalTrigger from '@erxes/ui/src/components/ModalTrigger';
-import Tags from '@erxes/ui/src/components/Tags';
-import TextInfo from '@erxes/ui/src/components/TextInfo';
 import Tip from '@erxes/ui/src/components/Tip';
-import { __, getEnv } from 'coreui/utils';
+import { __ } from '@erxes/ui/src/utils';
 import React from 'react';
 import { IPost } from '../../types';
+import PostForm from '../PostForm';
+import { IButtonMutateProps } from '@erxes/ui/src/types';
 
 type Props = {
   post: IPost;
   remove: (postId: string) => void;
+  isChecked?: boolean;
+  toggleBulk: (target: any, toAdd: boolean) => void;
+  renderButton: (props: IButtonMutateProps) => JSX.Element;
 };
 
 class Row extends React.Component<Props> {
@@ -26,7 +28,9 @@ class Row extends React.Component<Props> {
       </Button>
     );
 
-    const content = props => <></>;
+    const content = props => (
+      <PostForm {...props} renderButton={this.props.renderButton} post={post} />
+    );
 
     return (
       <ModalTrigger
@@ -56,10 +60,27 @@ class Row extends React.Component<Props> {
   }
 
   render() {
-    const { post } = this.props;
+    const { post, isChecked, toggleBulk } = this.props;
+
+    const onChange = e => {
+      if (toggleBulk) {
+        toggleBulk(post, e.target.checked);
+      }
+    };
+
+    const onClick = e => {
+      e.stopPropagation();
+    };
 
     return (
       <tr>
+        <td id="customersCheckBox" style={{ width: '50px' }} onClick={onClick}>
+          <FormControl
+            checked={isChecked}
+            componentClass="checkbox"
+            onChange={onChange}
+          />
+        </td>
         <td>{post.title}</td>
         <td>{post.state}</td>
         <td>{post.stateChangedAt}</td>
