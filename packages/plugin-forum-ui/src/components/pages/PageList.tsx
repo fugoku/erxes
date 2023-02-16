@@ -8,13 +8,13 @@ import Row from './Row';
 import SortHandler from '@erxes/ui/src/components/SortHandler';
 import Table from '@erxes/ui/src/components/table';
 import Wrapper from '@erxes/ui/src/layout/components/Wrapper';
-import { __ } from '@erxes/ui/src/utils';
 import { IPage } from '../../types';
 import FormControl from '@erxes/ui/src/components/form/Control';
 import ModalTrigger from '@erxes/ui/src/components/ModalTrigger';
 import PageForm from './PageForm';
 import { IButtonMutateProps } from '@erxes/ui/src/types';
-import { Alert, confirm } from '@erxes/ui/src/utils';
+import { Alert, confirm, __, router as routerUtils } from '@erxes/ui/src/utils';
+import { Flex } from '@erxes/ui/src/styles/main';
 
 type Props = {
   pages: IPage[];
@@ -60,6 +60,12 @@ class List extends React.Component<Props> {
     return <PageForm {...props} renderButton={this.props.renderButton} />;
   };
 
+  searchHandler = event => {
+    const { history } = this.props;
+
+    routerUtils.setParams(history, { search: event.target.value });
+  };
+
   render() {
     const {
       queryParams,
@@ -69,12 +75,11 @@ class List extends React.Component<Props> {
       bulk,
       toggleAll,
       remove,
-      emptyBulk
+      emptyBulk,
+      history
     } = this.props;
 
     let actionBarLeft: React.ReactNode;
-
-    queryParams.loadingMainQuery = loading;
 
     if (bulk.length > 0) {
       const onClick = () => {
@@ -101,16 +106,25 @@ class List extends React.Component<Props> {
     }
 
     const actionBarRight = (
-      <ModalTrigger
-        title="Create New Page"
-        size="lg"
-        trigger={
-          <Button btnStyle="success" size="small" icon="plus-circle">
-            Create New Page
-          </Button>
-        }
-        content={this.renderForm}
-      />
+      <Flex>
+        <FormControl
+          type="text"
+          placeholder={__('Type to search')}
+          onChange={this.searchHandler}
+          value={routerUtils.getParam(history, 'search')}
+        />
+        &nbsp;&nbsp;
+        <ModalTrigger
+          title="Create New Page"
+          size="lg"
+          trigger={
+            <Button btnStyle="success" size="small" icon="plus-circle">
+              Create New Page
+            </Button>
+          }
+          content={this.renderForm}
+        />
+      </Flex>
     );
 
     const onChange = () => {
