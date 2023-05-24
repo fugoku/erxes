@@ -5,7 +5,7 @@ import { duedateFilter, priorityFilter } from "../../main/constants";
 import { Card } from "react-bootstrap";
 import Detail from "../containers/Detail";
 import Group from "../containers/Group";
-import { GroupList } from "../../styles/tickets";
+import { GroupList } from "../../styles/cards";
 import TicketForm from "../containers/Form";
 import TicketHeader from "./TicketHeader";
 import { getConfigColor } from "../../common/utils";

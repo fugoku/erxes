@@ -1,7 +1,7 @@
 import { typeFilters, viewModes } from "../../main/constants";
 
 import Button from "../../common/Button";
-import { CardTab } from "../../styles/tickets";
+import { CardTab } from "../../styles/cards";
 import { Dropdown } from "react-bootstrap";
 import DropdownToggle from "../../common/DropdownToggle";
 import { HeaderWrapper } from "../../styles/main";

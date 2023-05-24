@@ -5,7 +5,7 @@ import {
   ListBody,
   ListHead,
   ListRow,
-} from "../../styles/tickets";
+} from "../../styles/cards";
 
 import EmptyState from "../../common/form/EmptyState";
 import React from "react";
