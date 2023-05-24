@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import Alert from "../../utils/Alert";
 import Button from "../../common/Button";
 import { ControlLabel } from "../../common/form";
-import { DetailHeader } from "../../styles/tickets";
+import { DetailHeader } from "../../styles/cards";
 import FormControl from "../../common/form/Control";
 import FormGroup from "../../common/form/Group";
 import { FormWrapper } from "../../styles/main";
