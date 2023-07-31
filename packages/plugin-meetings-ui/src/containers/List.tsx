@@ -5,9 +5,8 @@ import { Alert, confirm, router, withProps } from '@erxes/ui/src/utils';
 import List from '../components/List';
 import {
   EditMutationResponse,
-  RemoveMutationResponse,
   MeetingsQueryResponse,
-  TypeQueryResponse
+  RemoveMutationResponse
 } from '../types';
 import { mutations, queries } from '../graphql';
 import React from 'react';
@@ -17,32 +16,24 @@ import Spinner from '@erxes/ui/src/components/Spinner';
 
 type Props = {
   history: any;
-  typeId: string;
+  searchFilter: string;
+
+  queryParams: any;
+  route?: string;
 };
 
 type FinalProps = {
-  listQuery: MeetingsQueryResponse;
-  listMeetingsTypeQuery: TypeQueryResponse;
+  meetingQuery: MeetingsQueryResponse;
 } & Props &
   RemoveMutationResponse &
   EditMutationResponse;
 
 const ListContainer = (props: FinalProps) => {
-  const {
-    listQuery,
-    listMeetingsTypeQuery,
-    removeMutation,
-    editMutation,
-    history,
-    typeId
-  } = props;
+  const { meetingQuery, removeMutation, editMutation, history } = props;
 
-  if (listQuery.loading) {
+  if (meetingQuery.loading) {
     return <Spinner />;
   }
-
-  const types = listMeetingsTypeQuery.meetingsTypes || [];
-
   const renderButton = ({
     passedName,
     values,
@@ -52,7 +43,7 @@ const ListContainer = (props: FinalProps) => {
   }: IButtonMutateProps) => {
     return (
       <ButtonMutate
-        mutation={object ? mutations.edit : mutations.add}
+        mutation={object ? mutations.editMeeting : mutations.addMeeting}
         variables={values}
         callback={callback}
         isSubmitted={isSubmitted}
@@ -60,7 +51,7 @@ const ListContainer = (props: FinalProps) => {
         successMessage={`You successfully ${
           object ? 'updated' : 'added'
         } a ${passedName}`}
-        refetchQueries={['listQuery']}
+        refetchQueries={['meetings']}
       />
     );
   };
@@ -89,17 +80,16 @@ const ListContainer = (props: FinalProps) => {
     })
       .then(() => {
         Alert.success('Successfully updated an item');
-        listQuery.refetch();
+        meetingQuery.refetch();
       })
       .catch(e => Alert.error(e.message));
   };
 
   const updatedProps = {
     ...props,
-    meetingss: listQuery.meetingss || [],
-    types: listMeetingsTypeQuery.meetingsTypes || [],
-    typeId,
-    loading: listQuery.loading,
+    meetings: meetingQuery.meetings || [],
+    types: [],
+    loading: meetingQuery.loading,
     remove,
     edit,
     renderButton
@@ -116,20 +106,12 @@ export default withProps<Props>(
       })
     }),
 
-    graphql<Props, MeetingsQueryResponse, { typeId: string }>(
-      gql(queries.list),
-      {
-        name: 'listQuery',
-        options: ({ typeId }) => ({
-          variables: { typeId: typeId || '' },
-          fetchPolicy: 'network-only'
-        })
-      }
-    ),
-    graphql(gql(queries.totalCount), {
-      name: 'totalCountQuery'
+    graphql(gql(queries.meetings), {
+      name: 'meetingQuery',
+      options: () => ({
+        fetchPolicy: 'network-only'
+      })
     }),
-
     graphql(gql(mutations.remove), {
       name: 'removeMutation',
       options: () => ({
@@ -137,7 +119,7 @@ export default withProps<Props>(
       })
     }),
 
-    graphql(gql(mutations.edit), {
+    graphql(gql(mutations.editMeeting), {
       name: 'editMutation'
     })
   )(ListContainer)
