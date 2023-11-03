@@ -1,12 +1,12 @@
 "use client"
 
 import { currentUserAtom } from "@/modules/JotaiProiveder"
-import { IUser } from "@/modules/types"
 import { useQuery, useSubscription } from "@apollo/client"
 import { useAtomValue } from "jotai"
 
 import { queries } from "../graphql"
 import { IAbsence } from "../types"
+import { isCurrentUserAdmin } from "../utils"
 
 export interface IUseRequests {
   loading: boolean
@@ -18,27 +18,47 @@ export interface IUseRequests {
 export const useRequests = (
   page: number,
   perPage: number,
-  startDate: Date,
-  endDate: Date
+  startDate: string,
+  endDate: string
 ): IUseRequests => {
   const currentUser = useAtomValue(currentUserAtom)
-  const isCurrentUserAdmin = currentUser?.isAdmin
 
-  const { data, loading, error } = useQuery(queries.requestsMain, {
-    variables: { page, perPage, startDate, endDate, isCurrentUserAdmin },
+  const {
+    data: mainData,
+    loading,
+    error,
+  } = useQuery(queries.requestsMain, {
+    variables: {
+      page,
+      perPage,
+      startDate,
+      endDate,
+      isCurrentUserAdmin: isCurrentUserAdmin(currentUser),
+    },
   })
 
-  const requestsList = (data || {}).requestsMain
-    ? (data || {}).requestsMain.list
+  const requestsList = (mainData || {}).requestsMain
+    ? (mainData || {}).requestsMain.list
     : []
-  const requestsTotalCount = (data || {}).requestsMain
-    ? (data || {}).requestsMain.totalCount
+
+  const requestsTotalCount = (mainData || {}).requestsMain
+    ? (mainData || {}).requestsMain.totalCount
+    : 0
+
+  const {
+    data: typesData,
+    loading: typesLoading,
+    error: typesError,
+  } = useQuery(queries.absenceTypes)
+
+  const typesList = (typesData || {}).absenceTypes
+    ? (typesData || {}).absenceTypes
     : []
 
   return {
-    loading,
     requestsList,
-    error,
     requestsTotalCount,
+    loading,
+    error,
   }
 }
