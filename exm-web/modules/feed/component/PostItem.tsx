@@ -462,18 +462,24 @@ const PostItem = ({ postId }: { postId: string }): JSX.Element => {
             )
           })}
 
-          <div className="flex flex-wrap gap-3 mt-4">
-            {(feed.attachments || []).map((a, index) => {
-              return (
-                <a key={index} href={readFile(a.url)} className=" w-1/2 flex-1">
-                  <div className="flex bg-[#EAEAEA] text-sm font-medium text-[#444] attachment-shadow px-2.5 py-[5px] justify-between w-full rounded-lg rounded-tr-none">
-                    <span className="truncate">{a.name}</span>{" "}
-                    <ExternalLinkIcon size={18} />
-                  </div>
-                </a>
-              )
-            })}
-          </div>
+          {feed.attachments && feed.attachments.length > 0 && (
+            <div className="flex flex-wrap gap-3 mt-4">
+              {(feed.attachments || []).map((a, index) => {
+                return (
+                  <a
+                    key={index}
+                    href={readFile(a.url)}
+                    className="w-1/2 flex-1"
+                  >
+                    <div className="flex bg-[#EAEAEA] text-sm font-medium text-[#444] attachment-shadow px-2.5 py-[5px] justify-between w-full rounded-lg rounded-tr-none">
+                      <span className="truncate">{a.name}</span>{" "}
+                      <ExternalLinkIcon size={18} />
+                    </div>
+                  </a>
+                )
+              })}
+            </div>
+          )}
 
           {feed.images && feed.images.length > 0 && (
             <div className="mt-4">
