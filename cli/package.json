@@ -20,7 +20,7 @@
     "pm2": "./node_modules/pm2/bin/pm2"
   },
   "scripts": {
-    "start": "./bin/erxes.js dev",
+    "start": "node init && ./bin/erxes.js dev",
     "restart": "pm2 restart all"
   },
   "dependencies": {

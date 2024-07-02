@@ -2,8 +2,8 @@
   "name": "@erxes/plugin-insight-api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon src/index.ts",
-    "build": "tsc",
+    "dev": "node init && nodemon src/index.ts",
+    "build": "node init && tsc",
     "migrateCharts": "../../node_modules/.bin/ts-node src/commands/migrateCharts.ts",
     "migrateDimensions": "../../node_modules/.bin/ts-node src/commands/migrateChartDimensions.ts"
   },

@@ -2,8 +2,8 @@
   "name": "gateway",
   "version": "1.0.0",
   "scripts": {
-    "dev": "NODE_ENV=development nodemon src/index.ts",
-    "build": "yarn tsc"
+    "dev": "node init && NODE_ENV=development nodemon src/index.ts",
+    "build": "node init && yarn tsc"
   },
   "dependencies": {
     "@apollo/client": "^3.9.5",

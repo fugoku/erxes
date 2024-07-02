@@ -2,11 +2,11 @@
   "name": "plugin-meetings-ui",
   "version": "1.0.0",
   "scripts": {
-    "start": "webpack serve --mode development",
-    "build": "webpack --mode production"
+    "start": "node init && webpack serve --mode development",
+    "build": "node init && webpack --mode production"
   },
   "dependencies": {
-    "@erxes/ui" : "*",
+    "@erxes/ui": "*",
     "@fullcalendar/core": "^6.1.8",
     "@fullcalendar/daygrid": "^6.1.8",
     "@fullcalendar/interaction": "^6.1.8",

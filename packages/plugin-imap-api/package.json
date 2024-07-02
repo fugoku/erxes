@@ -2,18 +2,18 @@
   "name": "@erxes/plugin-imap-api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon src/index.ts",
-    "build" : "tsc"
+    "dev": "node init && nodemon src/index.ts",
+    "build": "node init && tsc"
   },
   "dependencies": {
-    "@erxes/api-utils" : "*",
+    "@erxes/api-utils": "*",
     "base64-stream": "^1.0.0",
     "mailparser": "^3.5.0",
     "node-imap": "^0.9.6",
     "nodemailer": "^6.8.0",
-    "redlock" : "4.2.0"
+    "redlock": "4.2.0"
   },
   "devDependencies": {
-    "@types/node-imap" : "^0.9.3"
+    "@types/node-imap": "^0.9.3"
   }
 }

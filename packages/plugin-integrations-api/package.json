@@ -2,11 +2,11 @@
   "name": "@erxes/plugin-integrations-api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon src/index.ts",
-    "build" : "tsc"
+    "dev": "node init && nodemon src/index.ts",
+    "build": "node init && tsc"
   },
   "dependencies": {
-    "@erxes/api-utils" : "*",
+    "@erxes/api-utils": "*",
     "@google-cloud/pubsub": "^1.1.5",
     "@types/body-parser": "^1.17.0",
     "@types/dotenv": "^4.0.3",

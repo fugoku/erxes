@@ -2,11 +2,11 @@
   "name": "@erxes/plugin-chats-api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon src/index.ts",
-    "build" : "tsc"
+    "dev": "node init && nodemon src/index.ts",
+    "build": "node init && tsc"
   },
   "dependencies": {
-    "@erxes/api-utils" : "*",
+    "@erxes/api-utils": "*",
     "aws-sdk": "^2.493.0",
     "firebase-admin": "^8.6.1",
     "nodemailer": "^6.2.1",

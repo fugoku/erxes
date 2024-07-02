@@ -39,8 +39,8 @@
     "xss": "1.0.14"
   },
   "scripts": {
-    "start": "webpack serve --open --mode development",
-    "build": "node commands/build.js",
+    "start": "node init && webpack serve --open --mode development",
+    "build": "node init && node commands/build.js",
     "compress": "gzip -5 --keep -r build/static/js",
     "componentTest": "jest --runInBand --forceExit --detectOpenHandles --coverage",
     "open-cypress": "yarn run cypress open",

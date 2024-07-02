@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "tsc"
+    "build": "node init && tsc"
   },
   "devDependencies": {
     "//": "Do not put front end dependencies here!",

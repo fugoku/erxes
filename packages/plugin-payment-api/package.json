@@ -2,13 +2,13 @@
   "name": "@erxes/plugin-payment-api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon src/index.ts",
-    "dev:client": "yarn dev-server & yarn dev-webpack",
-    "build": "tsc",
-    "build:client": "webpack --config webpack.config.js",
-    "build:webpack": "webpack --mode production --config=webpack.prod.config.js",
-    "dev-webpack": "webpack --mode development --watch --progress",
-    "dev-server": "NODE_ENV=development nodemon -e ts --project tsconfig.json --exec ts-node"
+    "dev": "node init && nodemon src/index.ts",
+    "dev:client": "node init && yarn dev-server & yarn dev-webpack",
+    "build": "node init && tsc",
+    "build:client": "node init && webpack --config webpack.config.js",
+    "build:webpack": "node init && webpack --mode production --config=webpack.prod.config.js",
+    "dev-webpack": "node init && webpack --mode development --watch --progress",
+    "dev-server": "node init && NODE_ENV=development nodemon -e ts --project tsconfig.json --exec ts-node"
   },
   "dependencies": {
     "@erxes/api-utils": "*",

@@ -2,11 +2,11 @@
   "name": "@erxes/plugin-facebook-api",
   "version": "1.0.0",
   "scripts": {
-    "dev": "nodemon src/index.ts",
-    "build" : "tsc"
+    "dev": "node init && nodemon src/index.ts",
+    "build": "node init && tsc"
   },
   "dependencies": {
-    "@erxes/api-utils" : "*",
+    "@erxes/api-utils": "*",
     "botbuilder": "^4.4.0",
     "botbuilder-adapter-facebook-erxes": "^1.0.5",
     "fbgraph": "^1.4.4",

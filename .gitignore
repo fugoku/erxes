@@ -4,16 +4,13 @@ node_modules
 dist
 .next
 out
-.env
 *.un~
 *.swp
 *.swo
 *.log
 build
 /dock
-.env.local
 .env.development.local
-.env.development
 .env.test.local
 .env.production.local
 package-lock.json
@@ -47,3 +44,7 @@ docker/rabbitmq-data/**
 packages/plugin-payment-api/src/public/js/bundle.js
 packages/plugin-payment-api/src/public/js/bundle.js.gz
 packages/plugin-payment-api/src/public/js/bundle.js.map.gz
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
+config.bat

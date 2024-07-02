@@ -4,11 +4,11 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "ERXES_TELEMETRY_DISABLED=1 DEBUG=erxes-workers* NODE_ENV=development nodemon src/index.ts",
-    "build" : "tsc"
+    "dev": "node init && ERXES_TELEMETRY_DISABLED=1 DEBUG=erxes-workers* NODE_ENV=development nodemon src/index.ts",
+    "build": "node init && tsc"
   },
   "dependencies": {
-    "@erxes/api-utils" : "*",
+    "@erxes/api-utils": "*",
     "bcryptjs": "^2.4.3",
     "csv-parser": "^3.0.0",
     "file-type": "^10.4.0",

@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
-    "build": "next build && next export",
-    "start": "next start",
+    "dev": "node init && node server.js",
+    "build": "node init && next build && next export",
+    "start": "node init && next start",
     "format": "prettier --single-quote --write '@(pages)/**/*.ts' && prettier --single-quote --write '@(modules)/**/*.@(ts|tsx|json|css)'",
     "lint": "func () { if [ -z \"$1\" ]; then tslint '@(pages|modules)/**/*.ts?(x)'; else echo \"${1}/**/*.ts?(x)\" && tslint ${1}'/**/*.ts?(x)'; fi ;}; func"
   },
