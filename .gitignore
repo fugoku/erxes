@@ -47,3 +47,6 @@ docker/rabbitmq-data/**
 packages/plugin-payment-api/src/public/js/bundle.js
 packages/plugin-payment-api/src/public/js/bundle.js.gz
 packages/plugin-payment-api/src/public/js/bundle.js.map.gz
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
